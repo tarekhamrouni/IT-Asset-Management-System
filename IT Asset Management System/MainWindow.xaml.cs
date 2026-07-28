@@ -1,24 +1,58 @@
-﻿using System.Text;
+﻿using IT_Asset_Management_System.Views;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace IT_Asset_Management_System
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new DashboardPage());
+            SetActiveButton(DashboardButton);
+        }
+
+        private void DashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DashboardPage());
+            SetActiveButton(DashboardButton);
+        }
+
+        private void AssetsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AssetsPage());
+            SetActiveButton(AssetsButton);
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SettingsPage());
+            SetActiveButton(SettingsButton);
+        }
+
+        private void SetActiveButton(Button activeButton)
+        {
+            DashboardButton.Background = Brushes.Transparent;
+            AssetsButton.Background = Brushes.Transparent;
+            SettingsButton.Background = Brushes.Transparent;
+
+            DashboardButton.Foreground = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#D1D5DB"));
+
+            AssetsButton.Foreground = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#D1D5DB"));
+
+            SettingsButton.Foreground = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#D1D5DB"));
+
+            activeButton.Background = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#2563EB"));
+
+            activeButton.Foreground = Brushes.White;
         }
     }
 }

@@ -1,0 +1,98 @@
+﻿<Window x:Class="IT_Asset_Management_System.Views.SetupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Database Setup"
+        Width="850"
+        Height="550"
+        MinWidth="700"
+        MinHeight="500"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA">
+
+    <Grid>
+        <Border Width="520"
+                Padding="40"
+                Background="White"
+                CornerRadius="12"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+            <StackPanel>
+                <TextBlock Text="IT Asset Manager"
+                           FontSize="28"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Connect your Supabase database to get started."
+                           Margin="0,10,0,30"
+                           FontSize="14"
+                           Foreground="#6B7280"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Supabase Project URL"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <TextBox x:Name="ProjectUrlTextBox"
+                         Height="40"
+                         Margin="0,8,0,20"
+                         Padding="10"
+                         FontSize="14"/>
+
+                <TextBlock Text="Supabase Publishable Key"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <Grid Margin="0,8,0,10">
+                    <PasswordBox x:Name="PublishableKeyBox"
+                                 Height="40"
+                                 Padding="10"
+                                 FontSize="14"/>
+
+                    <TextBox x:Name="PublishableKeyTextBox"
+                             Height="40"
+                             Padding="10"
+                             FontSize="14"
+                             Visibility="Collapsed"/>
+                </Grid>
+
+                <CheckBox Content="Show key"
+            
+                    Margin="0,0,0,15"
+                    Foreground="#374151"
+                    Checked="ShowKeyCheckBox_Checked"
+                    Unchecked="ShowKeyCheckBox_Unchecked">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+
+                <TextBlock x:Name="StatusText"
+                           Margin="0,0,0,20"
+                           Foreground="#6B7280"/>
+
+                <Button x:Name="TestConnectionButton"
+                        Content="Test Connection"
+                        Height="42"
+                        Margin="0,0,0,10"
+                        Background="#E5E7EB"
+                        Foreground="#111827"
+                        BorderThickness="0"
+                        Cursor="Hand"/>
+
+                <Button x:Name="SaveContinueButton"
+                        Content="Save and Continue"
+                        Height="42"
+                        Click="SaveContinueButton_Click"
+                        Background="#2563EB"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="SemiBold"
+                        Cursor="Hand"/>
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
