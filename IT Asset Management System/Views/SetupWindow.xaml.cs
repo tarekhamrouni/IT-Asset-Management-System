@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IT_Asset_Management_System.Config;
+using IT_Asset_Management_System.Services;
 
 namespace IT_Asset_Management_System.Views
 {
@@ -19,6 +21,8 @@ namespace IT_Asset_Management_System.Views
     /// </summary>
     public partial class SetupWindow : Window
     {
+        private readonly ISupabaseConnectionService _connectionService = new SupabaseConnectionService();
+
         public SetupWindow()
         {
             InitializeComponent();
@@ -38,8 +42,40 @@ namespace IT_Asset_Management_System.Views
             PublishableKeyBox.Visibility = Visibility.Visible;
         }
 
-        private void SaveContinueButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveContinueButton_Click(object sender, RoutedEventArgs e)
         {
+            var url = ProjectUrlTextBox.Text.Trim();
+            var key = PublishableKeyTextBox.Visibility == Visibility.Visible
+                ? PublishableKeyTextBox.Text.Trim()
+                : PublishableKeyBox.Password.Trim();
+
+            if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(key))
+            {
+                StatusText.Text = "Please enter both the project URL and key.";
+                StatusText.Foreground = Brushes.Firebrick;
+                return;
+            }
+
+            SaveContinueButton.IsEnabled = false;
+            StatusText.Text = "Connecting...";
+            StatusText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6B7280"));
+
+            var configuration = new AppConfiguration
+            {
+                SupabaseUrl = url,
+                SupabasePublishableKey = key
+            };
+
+            var connected = await _connectionService.ConnectAsync(configuration);
+
+            if (!connected)
+            {
+                StatusText.Text = "Could not connect. Check your project URL and key and try again.";
+                StatusText.Foreground = Brushes.Firebrick;
+                SaveContinueButton.IsEnabled = true;
+                return;
+            }
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
 
