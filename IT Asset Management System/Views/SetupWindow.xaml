@@ -73,15 +73,6 @@
                            Margin="0,0,0,20"
                            Foreground="#6B7280"/>
 
-                <Button x:Name="TestConnectionButton"
-                        Content="Test Connection"
-                        Height="42"
-                        Margin="0,0,0,10"
-                        Background="#E5E7EB"
-                        Foreground="#111827"
-                        BorderThickness="0"
-                        Cursor="Hand"/>
-
                 <Button x:Name="SaveContinueButton"
                         Content="Save and Continue"
                         Height="42"
