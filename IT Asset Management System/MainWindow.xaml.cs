@@ -1,7 +1,5 @@
-﻿using IT_Asset_Management_System.Views;
+using IT_Asset_Management_System.Views;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -9,11 +7,19 @@ namespace IT_Asset_Management_System
 {
     public partial class MainWindow : Window
     {
+        public double ContentScale { get; private set; } = 1.0;
+
         public MainWindow()
         {
             InitializeComponent();
             MainFrame.Navigate(new DashboardPage());
             SetActiveButton(DashboardButton);
+        }
+
+        public void SetContentScale(double scale)
+        {
+            ContentScale = scale;
+            MainFrame.LayoutTransform = new ScaleTransform(scale, scale);
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
