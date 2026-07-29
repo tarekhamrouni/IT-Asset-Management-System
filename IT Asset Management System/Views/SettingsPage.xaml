@@ -1,14 +1,155 @@
-﻿<Page x:Class="IT_Asset_Management_System.Views.SettingsPage"
+<Page x:Class="IT_Asset_Management_System.Views.SettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:IT_Asset_Management_System.Views"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsPage">
+      Title="SettingsPage"
+      Background="{DynamicResource WindowBackgroundBrush}">
 
-    <Grid>
-        
-    </Grid>
+    <Page.Resources>
+        <Style x:Key="OptionButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Padding" Value="18,0"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="35">
+
+            <!-- Header -->
+            <TextBlock Text="Settings"
+                       FontSize="30"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+            <TextBlock Text="Manage your application preferences"
+                       Margin="0,6,0,18"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+            <Border Height="1"
+                    Background="{DynamicResource BorderBrush}"
+                    Margin="0,0,0,28"/>
+
+            <!-- Appearance -->
+            <Border Background="{DynamicResource SurfaceBrush}"
+                    CornerRadius="10"
+                    Padding="22"
+                    Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Appearance"
+                               FontSize="19"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,0,0,18"/>
+
+                    <TextBlock Text="Font Size"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+                    <TextBlock Text="Adjust the size of text and UI elements"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               Margin="0,3,0,12"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                        <Button x:Name="SmallFontButton"
+                                Content="Small"
+                                Width="90"
+                                Style="{StaticResource OptionButtonStyle}"
+                                Click="SmallFontButton_Click"/>
+                        <Button x:Name="MediumFontButton"
+                                Content="Medium"
+                                Width="90"
+                                Style="{StaticResource OptionButtonStyle}"
+                                Click="MediumFontButton_Click"/>
+                        <Button x:Name="LargeFontButton"
+                                Content="Large"
+                                Width="90"
+                                Style="{StaticResource OptionButtonStyle}"
+                                Click="LargeFontButton_Click"/>
+                    </StackPanel>
+
+                    <TextBlock Text="Theme"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+                    <TextBlock Text="Choose how the app looks"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               Margin="0,3,0,12"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="LightThemeButton"
+                                Content="Light"
+                                Width="90"
+                                Style="{StaticResource OptionButtonStyle}"
+                                Click="LightThemeButton_Click"/>
+                        <Button x:Name="DarkThemeButton"
+                                Content="Dark"
+                                Width="90"
+                                Style="{StaticResource OptionButtonStyle}"
+                                Click="DarkThemeButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Database connection -->
+            <Border Background="{DynamicResource SurfaceBrush}"
+                    CornerRadius="10"
+                    Padding="22">
+                <StackPanel>
+                    <TextBlock Text="Database Connection"
+                               FontSize="19"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,0,0,6"/>
+                    <TextBlock Text="Manage the Supabase connection used by this app"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               Margin="0,0,0,18"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="DisconnectButton"
+                                Content="Disconnect"
+                                Height="42"
+                                Padding="18,0"
+                                Margin="0,0,10,0"
+                                Background="#E5E7EB"
+                                Foreground="#111827"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="DisconnectButton_Click"/>
+
+                        <Button x:Name="ChangeDatabaseButton"
+                                Content="Change Database"
+                                Height="42"
+                                Padding="18,0"
+                                Background="#2563EB"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="ChangeDatabaseButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

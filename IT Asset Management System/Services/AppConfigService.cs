@@ -34,5 +34,11 @@ namespace IT_Asset_Management_System.Services
             var json = JsonSerializer.Serialize(configuration, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_configFilePath, json);
         }
+
+        public void Clear()
+        {
+            if (File.Exists(_configFilePath))
+                File.Delete(_configFilePath);
+        }
     }
 }

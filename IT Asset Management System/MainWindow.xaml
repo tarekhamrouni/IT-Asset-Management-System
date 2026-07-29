@@ -7,7 +7,7 @@
         MinWidth="900"
         MinHeight="600"
         WindowStartupLocation="CenterScreen"
-        Background="#F5F7FA">
+        Background="{DynamicResource WindowBackgroundBrush}">
 
     <Window.Resources>
 
@@ -124,7 +124,7 @@
         <!-- Page body -->
         <Frame x:Name="MainFrame"
                Grid.Column="1"
-               Background="#F5F7FA"
+               Background="{DynamicResource WindowBackgroundBrush}"
                NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

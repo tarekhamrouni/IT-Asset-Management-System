@@ -23,9 +23,19 @@ namespace IT_Asset_Management_System.Views
     {
         private readonly ISupabaseConnectionService _connectionService = new SupabaseConnectionService();
 
-        public SetupWindow()
+        public SetupWindow() : this(null)
+        {
+        }
+
+        public SetupWindow(AppConfiguration? existingConfiguration)
         {
             InitializeComponent();
+
+            if (existingConfiguration is not null)
+            {
+                ProjectUrlTextBox.Text = existingConfiguration.SupabaseUrl;
+                PublishableKeyBox.Password = existingConfiguration.SupabasePublishableKey;
+            }
         }
 
         private void ShowKeyCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -75,6 +85,9 @@ namespace IT_Asset_Management_System.Views
                 SaveContinueButton.IsEnabled = true;
                 return;
             }
+
+            new AppConfigService().Save(configuration);
+            AppSession.AssetService = new AssetService(_connectionService);
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

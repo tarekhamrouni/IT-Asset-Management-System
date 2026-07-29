@@ -6,9 +6,10 @@
       xmlns:local="clr-namespace:IT_Asset_Management_System.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AssetsPage">
+      Title="AssetsPage"
+      Background="{DynamicResource WindowBackgroundBrush}">
 
     <Grid>
-        
+
     </Grid>
 </Page>

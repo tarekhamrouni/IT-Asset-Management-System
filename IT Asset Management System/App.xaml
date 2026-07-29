@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:IT_Asset_Management_System"
              StartupUri="Views/SetupWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#F5F7FA"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="White"/>
+        <SolidColorBrush x:Key="PrimaryTextBrush" Color="#111827"/>
+        <SolidColorBrush x:Key="SecondaryTextBrush" Color="#6B7280"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#E5E7EB"/>
+        <SolidColorBrush x:Key="AlternatingSurfaceBrush" Color="#F7F8FA"/>
     </Application.Resources>
 </Application>

@@ -7,5 +7,6 @@ namespace IT_Asset_Management_System.Services
         bool IsConfigured { get; }
         AppConfiguration? Load();
         void Save(AppConfiguration configuration);
+        void Clear();
     }
 }
