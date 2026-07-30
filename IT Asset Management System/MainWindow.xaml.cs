@@ -25,18 +25,36 @@ namespace IT_Asset_Management_System
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new DashboardPage());
+
+            while (MainFrame.CanGoBack)
+            {
+                MainFrame.RemoveBackEntry();
+            }
+
             SetActiveButton(DashboardButton);
         }
 
         private void AssetsButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new AssetsPage());
+
+            while (MainFrame.CanGoBack)
+            {
+                MainFrame.RemoveBackEntry();
+            }
+
             SetActiveButton(AssetsButton);
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new SettingsPage());
+
+            while (MainFrame.CanGoBack)
+            {
+                MainFrame.RemoveBackEntry();
+            }
+
             SetActiveButton(SettingsButton);
         }
 
