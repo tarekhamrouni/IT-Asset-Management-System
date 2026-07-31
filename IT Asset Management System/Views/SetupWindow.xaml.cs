@@ -78,7 +78,7 @@ namespace IT_Asset_Management_System.Views
 
             var connected = await _connectionService.ConnectAsync(configuration);
 
-
+            if (!connected)
             {
                 StatusText.Text = "Could not connect. Check your project URL and key and try again.";
                 StatusText.Foreground = Brushes.Firebrick;
